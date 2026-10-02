@@ -1,0 +1,16 @@
+# Contributing
+
+Start with a developer question or an observed explanation failure. Describe the input, what the agent produced, and why the developer could not understand or verify it. Remove private code and credentials from public reports.
+
+Change the shared skill only when the guidance applies across output formats. Put format-specific detail in the relevant reference. Keep the entry point concise and use relative links that survive copying the skill folder. Avoid adding a service dependency for an optional output mode.
+
+For a proposed change:
+
+1. Explain the behavior the change should improve.
+2. Run `python scripts/validate.py` after installing `requirements-dev.txt`.
+3. Exercise the relevant [evaluation scenario](docs/evaluation.md) with an agent when available.
+4. Inspect the generated artifact and record what was checked, what failed, and what remains unverified.
+
+Do not grade an explanation by how many headings or exact phrases it contains. Check whether the reader can trace the mechanism, verify the supporting evidence, and identify the relevant exception. A short answer that accomplishes this is a success.
+
+Keep the English and Chinese repository summaries consistent when user-facing behavior changes. Skill instructions use English for portability; generated explanations should follow the developer's language.

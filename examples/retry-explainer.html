@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An offline, synthetic retry-policy explainer from Understand First Skills.">
+  <title>Retries, understood — Understand First</title>
+  <style>
+    :root{color-scheme:light;--ink:#19352e;--muted:#50665e;--paper:#f6f5ed;--line:#d5dfd5;--green:#12654b;--soft:#e4efdf}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+    main{max-width:1160px;margin:auto;padding:32px 30px 60px}header{display:flex;justify-content:space-between;gap:20px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:20px}
+    .brand{font-weight:750;letter-spacing:-.03em;font-size:22px}.tag,.eyebrow{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.tag{background:var(--soft);padding:7px 12px;border-radius:20px}
+    .hero{padding:48px 0 30px;max-width:780px}.eyebrow{color:var(--green);margin-bottom:12px}h1{font-size:clamp(36px,5vw,60px);line-height:1.07;letter-spacing:-.045em;margin:0 0 20px}h2{font-size:22px;line-height:1.3;letter-spacing:-.02em;margin:0 0 12px}p{margin:0 0 14px}.lead{font-size:18px;color:var(--muted);max-width:670px}
+    .layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:22px;align-items:start}.panel{min-width:0;background:white;border:1px solid var(--line);border-radius:18px;padding:25px}.control{margin:24px 0 30px}label{display:flex;justify-content:space-between;gap:12px;font-weight:650;font-size:14px}output{font-variant-numeric:tabular-nums;color:var(--green)}input[type=range]{width:100%;margin:17px 0 7px;accent-color:var(--green);cursor:pointer}.bounds{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}.note{font-size:13px;color:var(--muted)}button{border:1px solid var(--line);border-radius:9px;background:var(--paper);color:var(--ink);font:inherit;font-size:14px;padding:8px 13px;cursor:pointer}button:hover{background:var(--soft)}:focus-visible{outline:3px solid #3b81c1;outline-offset:4px}
+    .metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:23px 0}.metric{padding:17px;background:var(--paper);border-radius:12px}.metric strong{display:block;font-size:35px;line-height:1.3;font-weight:650;letter-spacing:-.035em;font-variant-numeric:tabular-nums}.metric span{display:block;font-size:12px;color:var(--muted)}.success-track{height:13px;background:#e9eee8;border-radius:10px;overflow:hidden;margin:14px 0 7px}.success-fill{height:100%;background:var(--green);width:0}.interpretation{padding:16px 18px;background:var(--soft);border-left:3px solid var(--green);border-radius:0 8px 8px 0;font-size:14px;margin-top:20px}
+    .table-wrap{overflow:auto;margin-top:22px}table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-size:12px;font-weight:600}td:first-child{font-weight:650}.details{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:22px}details summary{cursor:pointer;font-weight:650}details p{margin-top:15px;font-size:14px}code{font:13px/1.6 ui-monospace,monospace;background:var(--paper);padding:3px 5px;border-radius:4px}ul{padding-left:19px;margin-bottom:0;font-size:14px}li{margin:8px 0}footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}a{color:var(--green)}noscript p{padding:16px;border:1px solid var(--line);background:white}
+    @media(max-width:760px){main{padding:20px 18px 40px}.layout,.details{grid-template-columns:minmax(0,1fr)}.hero{padding-top:32px}.panel{padding:20px}.tag{max-width:150px;text-align:center}.metric strong{font-size:30px}}
+    @media print{button,input{display:none}body{background:white}main{padding:0}.layout{grid-template-columns:240px 1fr}.panel{break-inside:avoid}.hero{padding-top:20px}}
+  </style>
+</head>
+<body>
+<main>
+  <header><div class="brand">Understand First<span aria-hidden="true">.</span></div><span class="tag">Synthetic model / offline</span></header>
+  <section class="hero" aria-labelledby="title"><div class="eyebrow">One mechanism. A few controls. A clearer decision.</div><h1 id="title">Retries buy another chance.<br>They also send more work.</h1><p class="lead">Explore how a retry budget changes success probability and request volume. This simplified model explains a tradeoff; it does not predict your service.</p></section>
+  <noscript><p>Enable JavaScript to explore the controls. At the default settings, three retries allow four attempts, with a 93.75% modeled success probability and 1.875 expected attempts. Worst-case backoff wait is 1.75 seconds.</p></noscript>
+  <div class="layout">
+    <aside class="panel" aria-labelledby="controls-title">
+      <h2 id="controls-title">Change the policy</h2><p class="note">The first request is an attempt. A retry is an extra attempt after failure.</p>
+      <div class="control"><label for="retries">Retry budget <output id="retry-value" for="retries">3 retries</output></label><input type="range" id="retries" min="0" max="6" step="1" value="3"><div class="bounds"><span>0 retries</span><span>6 retries</span></div></div>
+      <div class="control"><label for="failure">Failure per attempt <output id="failure-value" for="failure">50%</output></label><input type="range" id="failure" min="0" max="100" step="5" value="50"><div class="bounds"><span>0%</span><span>100%</span></div></div>
+      <p class="note">Backoff starts at 250 ms, doubles with each retry, and caps each delay at 4 seconds.</p><button id="reset" type="button">Reset example</button>
+    </aside>
+    <section class="panel" aria-labelledby="results-title">
+      <div class="eyebrow">What the policy means</div><h2 id="results-title">Chance of at least one success</h2>
+      <div id="results" aria-live="polite" aria-atomic="true">
+        <div class="success-track" aria-hidden="true"><div class="success-fill" id="success-fill"></div></div>
+        <div class="metrics"><div class="metric"><strong id="success">93.75%</strong><span>Modeled success probability</span></div><div class="metric"><strong id="expected">1.875</strong><span>Expected attempts per operation</span></div><div class="metric"><strong id="attempts">4</strong><span>Maximum attempts</span></div><div class="metric"><strong id="wait">1.75 s</strong><span>Worst-case backoff wait</span></div></div>
+        <p class="interpretation" id="interpretation"></p>
+      </div>
+      <div class="table-wrap"><table><caption class="note">Path when each preceding attempt fails</caption><thead><tr><th scope="col">Attempt</th><th scope="col">Wait before it</th><th scope="col">Total backoff wait</th></tr></thead><tbody id="timeline"></tbody></table></div>
+      <p class="note" style="margin-top:14px">Stop after the first success. The table shows the longest possible path. Wait excludes request duration.</p>
+    </section>
+  </div>
+  <div class="details">
+    <section class="panel"><h2>Read the model</h2><p class="note">Let <code>p</code> be failure probability and <code>r</code> the retry budget.</p><ul><li>Maximum attempts: <code>N = r + 1</code>.</li><li>Chance of success: <code>1 − pᴺ</code>.</li><li>Expected attempts: <code>1 + p + … + pʳ</code>.</li><li>Delay before retry <code>i</code>, starting at 1: <code>min(250 × 2ⁱ⁻¹, 4000) ms</code>.</li></ul></section>
+    <section class="panel"><h2>Know the limits</h2><p class="note">Failures are independent and have the same probability on every attempt. The model assumes unlimited server capacity and no change in failure probability during backoff.</p><details open><summary>What a real service can change</summary><p>A shared outage makes failures correlated. Extra retries can overload a server. A lost response can hide a completed write. Use measured data, appropriate retry rules, and idempotency before applying a policy.</p></details></section>
+  </div>
+  <footer>Original example from Understand First Skills · No production data, network requests, or external assets · Editable as one HTML file</footer>
+</main>
+<script>
+  'use strict';
+  const byId = id => document.getElementById(id);
+  const retries = byId('retries');
+  const failure = byId('failure');
+  function computeModel(retryBudget, failureProbability) {
+    const attempts = retryBudget + 1;
+    const success = 1 - failureProbability ** attempts;
+    let expected = 0;
+    let wait = 0;
+    const timeline = [];
+    for (let index = 0; index < attempts; index++) {
+      expected += failureProbability ** index;
+      const delay = index === 0 ? 0 : Math.min(250 * 2 ** (index - 1), 4000);
+      wait += delay;
+      timeline.push({attempt: index + 1, delay, wait});
+    }
+    return {attempts, success, expected, wait, timeline};
+  }
+  const formatNumber = value => value.toLocaleString('en-US', {maximumFractionDigits: 3});
+  const formatWait = value => value === 0 ? '0 ms' : value < 1000 ? `${value} ms` : `${formatNumber(value / 1000)} s`;
+  function update() {
+    const retryBudget = Number(retries.value);
+    const p = Number(failure.value) / 100;
+    const model = computeModel(retryBudget, p);
+    byId('retry-value').textContent = `${retryBudget} ${retryBudget === 1 ? 'retry' : 'retries'}`;
+    byId('failure-value').textContent = `${failure.value}%`;
+    byId('success').textContent = `${formatNumber(model.success * 100)}%`;
+    byId('expected').textContent = formatNumber(model.expected);
+    byId('attempts').textContent = model.attempts;
+    byId('wait').textContent = formatWait(model.wait);
+    byId('success-fill').style.width = `${model.success * 100}%`;
+    const message = p === 1 ? 'Every attempt fails in this model. More retries add requests and waiting without improving the outcome.' : p === 0 ? 'The first request always succeeds in this model. The retry budget is never used.' : retryBudget === 0 ? 'There is one attempt and no backoff. A failed request ends the operation.' : `Compared with one attempt, this budget raises modeled success from ${formatNumber((1 - p) * 100)}% to ${formatNumber(model.success * 100)}%. It sends ${formatNumber(model.expected)} attempts on average, stopping after the first success.`;
+    byId('interpretation').textContent = message;
+    byId('timeline').replaceChildren(...model.timeline.map(item => {
+      const row = document.createElement('tr');
+      for (const text of [`${item.attempt}${item.attempt === 1 ? ' · first request' : ' · retry'}`, formatWait(item.delay), formatWait(item.wait)]) {
+        const cell = document.createElement('td');
+        cell.textContent = text;
+        row.append(cell);
+      }
+      return row;
+    }));
+  }
+  retries.addEventListener('input', update);
+  failure.addEventListener('input', update);
+  byId('reset').addEventListener('click', () => { retries.value = 3; failure.value = 50; update(); });
+  update();
+</script>
+</body>
+</html>
