@@ -5,13 +5,13 @@
   <circle cx="1190" cy="10" r="220" fill="#173d35"/>
   <circle cx="1200" cy="300" r="140" fill="#1b493d"/>
   <path d="M950 70H1195M950 120H1195M950 170H1195M950 220H1195M950 270H1195" stroke="#326555" opacity=".4"/>
-  <text x="65" y="68" font-family="Arial, sans-serif" font-size="16" letter-spacing="3" fill="#a7d5bd">COMMUNICATE CLEARLY / AGENT SKILL</text>
+  <text x="65" y="68" font-family="Arial, sans-serif" font-size="16" letter-spacing="3" fill="#a7d5bd">COMMUNICATE CLEARLY / AI EXPLANATIONS</text>
   <text x="62" y="153" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#f5f3e9">AI Communicate Skills.</text>
-  <text x="65" y="208" font-family="Arial, sans-serif" font-size="26" fill="#c8dfd2">Help humans understand what agents build.</text>
+  <text x="65" y="208" font-family="Arial, sans-serif" font-size="26" fill="#c8dfd2">Help AI explain its work clearly.</text>
   <g font-family="Arial, sans-serif" font-size="16" fill="#d6e7dc">
     <rect x="65" y="258" width="128" height="40" rx="20" fill="#21483e"/><text x="88" y="284">Clear writing</text>
     <rect x="205" y="258" width="116" height="40" rx="20" fill="#21483e"/><text x="227" y="284">Diagrams</text>
-    <rect x="333" y="258" width="174" height="40" rx="20" fill="#21483e"/><text x="354" y="284">Interactive HTML</text>
+    <rect x="333" y="258" width="174" height="40" rx="20" fill="#21483e"/><text x="350" y="284">Interactive pages</text>
     <rect x="519" y="258" width="156" height="40" rx="20" fill="#21483e"/><text x="540" y="284">Video explainers</text>
   </g>
   <g fill="#c1ed91" stroke="#112c28" stroke-width="4">
