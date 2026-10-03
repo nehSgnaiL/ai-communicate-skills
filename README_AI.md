@@ -33,6 +33,8 @@ You can also ask an agent with file access to read `skills/communicate-clearly/S
 
 ### Check and apply updates
 
+Apply authorized updates and skill renames directly. Create a backup of the old installation only when the user explicitly requests one; a backup is not a prerequisite for updating.
+
 For a read-only check, run the bundled script from your installed skill folder (Node.js 22 or newer):
 
 ```bash
