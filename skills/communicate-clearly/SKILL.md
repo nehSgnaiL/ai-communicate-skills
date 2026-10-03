@@ -1,10 +1,10 @@
 ---
-name: understand-first
+name: communicate-clearly
 description: Help human developers understand agent work, code behavior, architecture, debugging evidence, and technical tradeoffs. Use for explanations, review handoffs, or complex changes that need an inspectable mental model; choose clear prose, diagrams, interactive HTML, or a video explainer to fit the question. Keep routine status and simple answers brief.
 license: MIT
 ---
 
-# Understand First
+# Communicate Clearly
 
 Make the developer able to explain the mechanism, check the evidence, and make the next decision. Reduce the effort needed to understand agent output while continuing the requested work.
 

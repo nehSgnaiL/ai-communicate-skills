@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
-  <title id="title">Understand First</title>
-  <desc id="desc">Help humans understand what agents build. Writing, diagrams, interactive HTML, and video.</desc>
+  <title id="title">AI Communicate Skills — Communicate Clearly</title>
+  <desc id="desc">AI Communicate Skills provides Communicate Clearly. Writing, diagrams, interactive HTML, and video.</desc>
   <rect width="1280" height="360" rx="24" fill="#112c28"/>
   <circle cx="1190" cy="10" r="220" fill="#173d35"/>
   <circle cx="1200" cy="300" r="140" fill="#1b493d"/>
   <path d="M950 70H1195M950 120H1195M950 170H1195M950 220H1195M950 270H1195" stroke="#326555" opacity=".4"/>
-  <text x="65" y="68" font-family="Arial, sans-serif" font-size="16" letter-spacing="4" fill="#a7d5bd">AGENT SKILLS / HUMAN UNDERSTANDING</text>
-  <text x="62" y="153" font-family="Arial, sans-serif" font-size="68" font-weight="700" fill="#f5f3e9">Understand First.</text>
+  <text x="65" y="68" font-family="Arial, sans-serif" font-size="16" letter-spacing="3" fill="#a7d5bd">COMMUNICATE CLEARLY / AGENT SKILL</text>
+  <text x="62" y="153" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#f5f3e9">AI Communicate Skills.</text>
   <text x="65" y="208" font-family="Arial, sans-serif" font-size="26" fill="#c8dfd2">Help humans understand what agents build.</text>
   <g font-family="Arial, sans-serif" font-size="16" fill="#d6e7dc">
     <rect x="65" y="258" width="128" height="40" rx="20" fill="#21483e"/><text x="88" y="284">Clear writing</text>

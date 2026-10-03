@@ -1,0 +1,4 @@
+interface:
+  display_name: "Communicate Clearly"
+  short_description: "Make agent work easy for human developers to inspect"
+  default_prompt: "Use $communicate-clearly to explain this work in the format that best helps me understand and review it."

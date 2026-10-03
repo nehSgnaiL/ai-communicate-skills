@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An offline, synthetic retry-policy explainer from Understand First Skills.">
-  <title>Retries, understood — Understand First</title>
+  <meta name="description" content="An offline, synthetic retry-policy explainer from AI Communicate Skills.">
+  <title>Retries, understood — Communicate Clearly</title>
   <style>
     :root{color-scheme:light;--ink:#19352e;--muted:#50665e;--paper:#f6f5ed;--line:#d5dfd5;--green:#12654b;--soft:#e4efdf}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
@@ -20,7 +20,7 @@
 </head>
 <body>
 <main>
-  <header><div class="brand">Understand First<span aria-hidden="true">.</span></div><span class="tag">Synthetic model / offline</span></header>
+  <header><div class="brand">Communicate Clearly<span aria-hidden="true">.</span></div><span class="tag">Synthetic model / offline</span></header>
   <section class="hero" aria-labelledby="title"><div class="eyebrow">One mechanism. A few controls. A clearer decision.</div><h1 id="title">Retries buy another chance.<br>They also send more work.</h1><p class="lead">Explore how a retry budget changes success probability and request volume. This simplified model explains a tradeoff; it does not predict your service.</p></section>
   <noscript><p>Enable JavaScript to explore the controls. At the default settings, three retries allow four attempts, with a 93.75% modeled success probability and 1.875 expected attempts. Worst-case backoff wait is 1.75 seconds.</p></noscript>
   <div class="layout">
@@ -45,7 +45,7 @@
     <section class="panel"><h2>Read the model</h2><p class="note">Let <code>p</code> be failure probability and <code>r</code> the retry budget.</p><ul><li>Maximum attempts: <code>N = r + 1</code>.</li><li>Chance of success: <code>1 − pᴺ</code>.</li><li>Expected attempts: <code>1 + p + … + pʳ</code>.</li><li>Delay before retry <code>i</code>, starting at 1: <code>min(250 × 2ⁱ⁻¹, 4000) ms</code>.</li></ul></section>
     <section class="panel"><h2>Know the limits</h2><p class="note">Failures are independent and have the same probability on every attempt. The model assumes unlimited server capacity and no change in failure probability during backoff.</p><details open><summary>What a real service can change</summary><p>A shared outage makes failures correlated. Extra retries can overload a server. A lost response can hide a completed write. Use measured data, appropriate retry rules, and idempotency before applying a policy.</p></details></section>
   </div>
-  <footer>Original example from Understand First Skills · No production data, network requests, or external assets · Editable as one HTML file</footer>
+  <footer>Original example from AI Communicate Skills · No production data, network requests, or external assets · Editable as one HTML file</footer>
 </main>
 <script>
   'use strict';

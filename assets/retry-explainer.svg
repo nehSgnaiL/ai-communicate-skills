@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">Communicate Clearly — retry policy illustrated preview</title>
+  <desc id="desc">An editable illustration from AI Communicate Skills. Three retries and a 50 percent failure probability give 93.75 percent modeled success, 1.875 expected attempts, four maximum attempts, and 1.75 seconds of worst-case backoff wait. Synthetic model, not production data or a browser screenshot.</desc>
+  <rect width="1280" height="800" rx="24" fill="#f6f5ed"/>
+  <g font-family="Arial, sans-serif" fill="#19352e">
+    <text x="48" y="61" font-size="26" font-weight="700">Communicate Clearly.</text>
+    <rect x="950" y="31" width="282" height="42" rx="21" fill="#e4efdf"/>
+    <text x="1091" y="57" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1">SYNTHETIC MODEL / OFFLINE</text>
+    <path d="M48 93H1232" stroke="#d5dfd5"/>
+    <text x="48" y="132" font-size="12" font-weight="700" letter-spacing="2" fill="#12654b">ONE MECHANISM. A FEW CONTROLS. A CLEARER DECISION.</text>
+    <text x="48" y="187" font-size="44" font-weight="700">Retries buy another chance.</text>
+    <text x="48" y="240" font-size="44" font-weight="700">They also send more work.</text>
+    <text x="48" y="280" font-size="18" fill="#50665e">Explore how a retry budget changes success probability and request volume.</text>
+
+    <rect x="48" y="321" width="335" height="371" rx="18" fill="white" stroke="#d5dfd5"/>
+    <text x="74" y="364" font-size="22" font-weight="700">Change the policy</text>
+    <text x="74" y="394" font-size="14" fill="#50665e">A retry is an extra attempt after failure.</text>
+    <text x="74" y="440" font-size="15" font-weight="700">Retry budget</text>
+    <text x="355" y="440" font-size="15" text-anchor="end" fill="#12654b">3 retries</text>
+    <path d="M76 468H355" stroke="#d5dfd5" stroke-width="7" stroke-linecap="round"/>
+    <path d="M76 468H215" stroke="#12654b" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="215" cy="468" r="8" fill="#12654b"/>
+    <text x="74" y="494" font-size="12" fill="#50665e">0 retries</text>
+    <text x="355" y="494" font-size="12" text-anchor="end" fill="#50665e">6 retries</text>
+    <text x="74" y="538" font-size="15" font-weight="700">Failure per attempt</text>
+    <text x="355" y="538" font-size="15" text-anchor="end" fill="#12654b">50%</text>
+    <path d="M76 566H355" stroke="#d5dfd5" stroke-width="7" stroke-linecap="round"/>
+    <path d="M76 566H215" stroke="#12654b" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="215" cy="566" r="8" fill="#12654b"/>
+    <text x="74" y="592" font-size="12" fill="#50665e">0%</text>
+    <text x="355" y="592" font-size="12" text-anchor="end" fill="#50665e">100%</text>
+    <text x="74" y="634" font-size="13" fill="#50665e">Backoff starts at 250 ms, doubles each retry,</text>
+    <text x="74" y="656" font-size="13" fill="#50665e">and caps each delay at 4 seconds.</text>
+
+    <rect x="405" y="321" width="827" height="371" rx="18" fill="white" stroke="#d5dfd5"/>
+    <text x="433" y="354" font-size="12" font-weight="700" letter-spacing="2" fill="#12654b">WHAT THE POLICY MEANS</text>
+    <text x="433" y="389" font-size="25" font-weight="700">Chance of at least one success</text>
+    <rect x="433" y="409" width="771" height="12" rx="6" fill="#e9eee8"/>
+    <rect x="433" y="409" width="722.8" height="12" rx="6" fill="#12654b"/>
+    <g fill="#f6f5ed">
+      <rect x="433" y="446" width="182" height="105" rx="12"/>
+      <rect x="629" y="446" width="182" height="105" rx="12"/>
+      <rect x="825" y="446" width="182" height="105" rx="12"/>
+      <rect x="1021" y="446" width="183" height="105" rx="12"/>
+    </g>
+    <g font-size="35" font-weight="700">
+      <text x="451" y="492">93.75%</text>
+      <text x="647" y="492">1.875</text>
+      <text x="843" y="492">4</text>
+      <text x="1039" y="492">1.75 s</text>
+    </g>
+    <g font-size="12" fill="#50665e">
+      <text x="451" y="520">Modeled success probability</text>
+      <text x="647" y="520">Expected attempts</text>
+      <text x="843" y="520">Maximum attempts</text>
+      <text x="1039" y="520">Worst-case backoff wait</text>
+    </g>
+    <rect x="433" y="574" width="771" height="86" rx="10" fill="#e4efdf"/>
+    <path d="M433 574V660" stroke="#12654b" stroke-width="4"/>
+    <text x="453" y="606" font-size="15">Compared with one attempt, this budget raises modeled success from 50% to 93.75%.</text>
+    <text x="453" y="633" font-size="15">It sends 1.875 attempts on average, stopping after the first success.</text>
+    <path d="M48 724H1232" stroke="#d5dfd5"/>
+    <text x="48" y="758" font-size="14" font-weight="700">AI Communicate Skills</text>
+    <text x="1232" y="758" text-anchor="end" font-size="13" fill="#50665e">Illustrated preview · Open the HTML demo to interact · No production data</text>
+  </g>
+</svg>
