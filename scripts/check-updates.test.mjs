@@ -43,3 +43,11 @@ test('fails instead of claiming current on network or incomplete responses', asy
   await assert.rejects(checkUpdates({ fetchImpl: async () => ({ ok: true, json: async () => ({ tree: [], truncated: true }) }) }), /incomplete/);
   await assert.rejects(checkUpdates({ fetchImpl: response([]) }), /not found/);
 });
+
+test('uses the authenticated fallback when the public API is rate limited', async t => {
+  const root = await fixture(t, { 'SKILL.md': 'current' });
+  const fetchImpl = async () => ({ ok: false, status: 403 });
+  const apiFallback = async () => ({ tree: [blob('SKILL.md', 'current')] });
+  assert.deepEqual(await checkUpdates({ root, fetchImpl, apiFallback }), { added: [], changed: [], removed: [] });
+  await assert.rejects(checkUpdates({ fetchImpl, apiFallback: async () => { throw new Error('no CLI'); } }), /fallback failed/);
+});

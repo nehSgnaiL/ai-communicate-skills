@@ -4,10 +4,20 @@ import { createHash } from 'node:crypto';
 import { readdir, readFile, realpath } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 
 const repository = 'nehSgnaiL/ai-communicate-skills';
 const prefix = 'skills/communicate-clearly/';
 const skillRoot = fileURLToPath(new URL('../', import.meta.url));
+
+async function githubCliTree() {
+  const { stdout } = await promisify(execFile)(
+    'gh', ['api', `repos/${repository}/git/trees/main?recursive=1`],
+    { timeout: 30_000, maxBuffer: 8 * 1024 * 1024, windowsHide: true, env: { ...process.env, GH_HOST: 'github.com' } },
+  );
+  return JSON.parse(stdout);
+}
 
 async function localFiles(root, directory = root) {
   const files = new Map();
@@ -26,7 +36,7 @@ async function localFiles(root, directory = root) {
   return files;
 }
 
-export async function checkUpdates({ root = skillRoot, fetchImpl = fetch } = {}) {
+export async function checkUpdates({ root = skillRoot, fetchImpl = fetch, apiFallback = fetchImpl === fetch ? githubCliTree : undefined } = {}) {
   const response = await fetchImpl(
     `https://api.github.com/repos/${repository}/git/trees/main?recursive=1`,
     {
@@ -34,8 +44,18 @@ export async function checkUpdates({ root = skillRoot, fetchImpl = fetch } = {})
       signal: AbortSignal.timeout(30_000),
     },
   );
-  if (!response.ok) throw new Error(`GitHub returned HTTP ${response.status}; try again later or check repository access.`);
-  const data = await response.json();
+  let data;
+  if (response.ok) {
+    data = await response.json();
+  } else if ([401, 403, 429].includes(response.status) && apiFallback) {
+    try {
+      data = await apiFallback();
+    } catch {
+      throw new Error(`GitHub returned HTTP ${response.status} and the GitHub CLI fallback failed; sign in with gh auth login or try again later.`);
+    }
+  } else {
+    throw new Error(`GitHub returned HTTP ${response.status}; try again later or check repository access.`);
+  }
   if (data.truncated || !Array.isArray(data.tree)) throw new Error('GitHub returned an incomplete file tree.');
   const upstream = new Map();
   for (const entry of data.tree) {

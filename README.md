@@ -86,7 +86,7 @@ For a read-only check, run the bundled script from your installed skill folder (
 node .agents/skills/communicate-clearly/scripts/check-updates.mjs
 ```
 
-For a global Codex installation, use `~/.codex/skills/communicate-clearly/scripts/check-updates.mjs` instead. The script compares all skill files with GitHub `main`, prints differing paths, and changes nothing. Exit codes are `0` for a match, `1` for differences, and `2` if the check failed. Differences can come from upstream changes or your local edits; review customizations before updating. This optional checker uses GitHub's public API and is subject to its rate limits.
+For a global Codex installation, use `~/.codex/skills/communicate-clearly/scripts/check-updates.mjs` instead. The script compares all skill files with GitHub `main`, prints differing paths, and changes nothing. Exit codes are `0` for a match, `1` for differences, and `2` if the check failed. Differences can come from upstream changes or your local edits; review customizations before updating. This optional checker uses GitHub's public API. If access is denied or rate limited, it tries an installed, authenticated GitHub CLI (`gh api`) without reading or printing credentials.
 
 Apply an update from the project where you installed the skill:
 

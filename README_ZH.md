@@ -78,7 +78,7 @@ git clone https://github.com/nehSgnaiL/ai-communicate-skills.git
 node .agents/skills/communicate-clearly/scripts/check-updates.mjs
 ```
 
-全局 Codex 安装请改用 `~/.codex/skills/communicate-clearly/scripts/check-updates.mjs`。脚本比较本地技能文件与 GitHub `main`，列出差异，不修改文件。退出码：`0` 表示一致，`1` 表示有差异，`2` 表示检查失败。差异可能来自上游更新或本地修改，更新前请检查自己的定制。该可选脚本使用 GitHub 公共 API，受其速率限制。
+全局 Codex 安装请改用 `~/.codex/skills/communicate-clearly/scripts/check-updates.mjs`。脚本比较本地技能文件与 GitHub `main`，列出差异，不修改文件。退出码：`0` 表示一致，`1` 表示有差异，`2` 表示检查失败。差异可能来自上游更新或本地修改，更新前请检查自己的定制。该可选脚本使用 GitHub 公共 API；遇到访问拒绝或速率限制时，尝试通过已安装并登录的 GitHub CLI (`gh api`) 查询，不读取或输出凭据。
 
 在安装技能的项目中应用更新：
 
