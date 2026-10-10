@@ -14,5 +14,5 @@
     "check:updates": "node skills/communicate-clearly/scripts/check-updates.mjs",
     "skills:update": "skills update communicate-clearly"
   },
-  "devDependencies": { "skills": "1.7.0" }
+  "devDependencies": { "skills": "1.7.1" }
 }
